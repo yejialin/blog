@@ -15,7 +15,7 @@ def login():
     if request.method == 'POST':
         form = request.form
         u = User(form)
-        user = User.query.filter_by(username=u.username).first()
+        user = Model.query.filter_by(username=u.username).first()
         if u.login_verified(user):
             return redirect('/blog')
         flash('Wrong password')
@@ -28,7 +28,7 @@ def register():
     if request.method == 'POST':
         form = request.form
         u = User(form)
-        user = User.query.filter_by(username=u.username).first()
+        user = Model.query.filter_by(username=u.username).first()
         if u.register_verified() and user is None:
             u.save()
             flash('Register success, now you can login!')

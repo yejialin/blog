@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ b['title'] }}</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/view.css"/>
+</head>
+<body>
+<div class="x">
+<a href="{{ url_for('blog.index') }}">return to main page</a>
+<h1>{{ b['title'] }}</h1>
+<h2>{{ b['content'] }}</h2>
+<h2>{{ b['create_time'] }}</h2>
+<h2>{{ b['author_id'] }}</h2>
+</div>
+</body>
+
+</html>
