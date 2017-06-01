@@ -1,0 +1,25 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Login</title>  
+    <link rel="stylesheet" type="text/css" href="/static/css/login.css"/>  
+</head>  
+<body>  
+    <div id="login">  
+        <h1>Login</h1>  
+        <form action="{{ url_for('.login') }}" method="post">  
+            <input type="text" required="required" placeholder="用户名" name="u"></input>  
+            <input type="password" required="required" placeholder="密码" name="p"></input>  
+            <button class="but" type="submit">登录</button>  
+        </form>  
+        <a href= "{{ url_for('.register') }}">还木有账号，快创建</a>
+        <h6>flashed message</h6>
+        <p style="color:white">
+            {% for message in get_flashed_messages() %}
+                {{ message }}
+            {% endfor %} 
+        </p>
+    </div>  
+</body>  
+</html> 
