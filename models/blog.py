@@ -1,6 +1,7 @@
 from . import db
 from . import ModelMixin
 
+
 class Blog(db.Model, ModelMixin):
     __tablename__ = 'blogs'
     id = db.Column(db.Integer, primary_key=True)

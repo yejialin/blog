@@ -19,6 +19,7 @@ def register_routes(app):
     app.register_blueprint(routes_auth, url_prefix='/auth')
     app.register_blueprint(routes_index, url_prefix='/')
 
+
 def configure_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     app.secret_key = 'secret key'

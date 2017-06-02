@@ -8,12 +8,12 @@
 <body>  
     <div id="login">  
         <h1>Login</h1>  
-        <form action="{{ url_for('.login') }}" method="post">  
+        <form action="{{ url_for('.view_login_post') }}" method="post">  
             <input type="text" required="required" placeholder="用户名" name="u"></input>  
             <input type="password" required="required" placeholder="密码" name="p"></input>  
             <button class="but" type="submit">登录</button>  
         </form>  
-        <a href= "{{ url_for('.register') }}">还木有账号，快创建</a>
+        <a href= "{{ url_for('.view_register_get') }}">还木有账号，快创建</a>
         <h6>flashed message</h6>
         <p style="color:white">
             {% for message in get_flashed_messages() %}

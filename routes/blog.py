@@ -11,6 +11,5 @@ def index():
 
 @main.route('/blog/<b_id>')
 def blog(b_id):
-    print(11111111111111111)
-    b = Model.query.filter_by(id = b_id).first()
+    b = Model.query.filter_by(id=b_id).first()
     return render_template('blog.html', b=b)
