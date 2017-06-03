@@ -12,9 +12,11 @@ db_path = 'blog.sqlite'
 manager = Manager(app)
 
 def register_routes(app):
+    from routes.error import main as routes_error
     from routes.blog import main as routes_blog
     from routes.auth import main as routes_auth
     from routes.main import main as routes_index
+    app.register_blueprint(routes_error, url_prefix='/error')
     app.register_blueprint(routes_blog, url_prefix='/blog')
     app.register_blueprint(routes_auth, url_prefix='/auth')
     app.register_blueprint(routes_index, url_prefix='/')

@@ -1,10 +1,9 @@
 from models.user import User
 from routes import *
 # for decorators
-from functools import wraps
 
 main = Blueprint('auth', __name__)
-Model = User
+
 
 @main.route('/')
 def index():
@@ -18,8 +17,9 @@ def view_login_get():
 def view_login_post():
     form = request.form
     u = User(form)
-    user = Model.query.filter_by(username=u.username).first()
+    user = User.query.filter_by(username=u.username).first()
     if u.login_verified(user):
+        session['u_id'] = user.id
         return redirect('/blog')
     flash('Wrong password')
     return redirect(url_for('.index'))
@@ -32,10 +32,15 @@ def view_register_get():
 def view_register_post():
     form = request.form
     u = User(form)
-    user = Model.query.filter_by(username=u.username).first()
+    user = User.query.filter_by(username=u.username).first()
     if u.register_verified() and user is None:
         u.save()
         flash('Register success, now you can login!')
         return redirect(url_for('.index'))
     flash('This name has been used!Change other one please!')
+    return redirect(url_for('.index'))
+
+@main.route('/logout')
+def logout():
+    session.clear()
     return redirect(url_for('.index'))

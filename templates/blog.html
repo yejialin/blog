@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ b['title'] }}</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/view.css"/>
-</head>
-<body>
-<div class="x">
-<a href="{{ url_for('blog.index') }}">return to main page</a>
-<h1>{{ b['title'] }}</h1>
-<h2>{{ b['content'] }}</h2>
-<h2>{{ b['create_time'] }}</h2>
-<h2>{{ b['author_id'] }}</h2>
-</div>
-</body>
-
+ <head>
+  <meta charset="UTF-8" />
+  <title>{{ b['title'] }}</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/view.css" >
+  <script src="/static/js/display.js"></script>
+ </head>
+ <body>
+  <div class="x">
+   <a href="{{ url_for('blog.index') }}">回到主页</a>
+   <a href="{{ url_for('.delete_blog', b_id=b['id']) }}">删除博客</a>
+   <hr />
+   <h1>{{ b['title'] }}</h1>
+   <h2>{{ b['content'] }}</h2>
+   <h2>{{ b['create_time'] }}</h2>
+   <h2>author: {{ un }}</h2>
+  </div>
+  <hr />
+  <p>开关评论</p><img src="/static/image/down.ico" onclick="test(this)">
+  <div id="div2" class="y" style="margin:0 auto; border:1px; solid #ccc; width:300px; display:block">
+    {% for i in c %}
+   <h1>{{ i['content'] }}</h1>
+   <h2>{{ i['create_time'] }}</h2>
+   <h2>{{ i['author_id'] }} </h2>
+   <a href="{{ url_for('.delete_comment', b_id=b['id'], c_id=i['id']) }}">删除</a>
+   <br>
+    {% endfor %}
+  </div>
+  <form action="{{ url_for('.view_blog_post', b_id=b['id']) }}" method="post">
+   <p>评论<input type="text" required="required" name="c" /></p>
+   <p><input type="submit" value="留言" /></p>
+  </form>
+ </body>
 </html>

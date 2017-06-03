@@ -23,3 +23,4 @@ class User(db.Model, ModelMixin):
 
     def register_verified(self):
         return True
+

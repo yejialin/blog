@@ -4,6 +4,8 @@ import time
 
 db = SQLAlchemy()
 
+def get_cur_time():
+    return time.asctime(time.localtime(time.time()))
 
 class ModelMixin(object):
     def __repr__(self):

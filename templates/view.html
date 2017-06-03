@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Blogs</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/view.css"/>
-</head>
-<body>
-<div class="x">
-  <h1>
-    Blog lists
-  </h1>
-  	<ul>
-    {% for i in b %}
-        <li><a href="{{ url_for('.blog', b_id=i['id']) }}">{{ i['title'] }}</a></li>
-    {% endfor %}
-    </ul>
-</div>
-</body>
+ <head>
+  <meta charset="UTF-8" />
+  <title>Blogs</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/view.css" />
+ </head>
+ <body>
+   <a href="{{ url_for('auth.logout') }}">退出登录</a>
+  <div class="x">
+   <h1> Blog lists </h1>
+   <a href="{{ url_for('.add_blog_get') }}">发表我的博客</a>
+   <ul>
+     {% for i in b %}
+    <li><a href="{{ url_for('.view_blog_get', b_id=i['id']) }}">{{ i['title'] }}</a></li>{% endfor %}
+   </ul>
+  </div>
+ </body>
 </html>
