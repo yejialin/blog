@@ -20,6 +20,7 @@ def view_blog_get(b_id):
     return render_template('blog.html', b=b, un=uname, c=hc)
 
 @main.route('/blog/<b_id>', methods=['POST'])
+@login_required
 def view_blog_post(b_id):
     form = request.form
     c = Comment(form, session['b_id'], session['u_id'])
